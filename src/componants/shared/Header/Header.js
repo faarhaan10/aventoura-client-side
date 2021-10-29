@@ -18,16 +18,16 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
           <Navbar.Collapse id="responsive-navbar-nav" className="fw-bold">
-            <Nav className="me-auto align-items-center">
-              <Nav.Link as={Link} to="/admin">
-                <Button variant="secondary">Admin</Button>
-              </Nav.Link>
+            <Nav className=" align-items-center">
               <Nav.Link as={Link} to="/home">
                 Home
               </Nav.Link>
               <Nav.Link as={HashLink} to="/home#plans">
                 Plans
               </Nav.Link>
+
+              
+
               <Nav.Link as={Link} to="/about">
                 About
               </Nav.Link>
@@ -35,6 +35,19 @@ const Header = () => {
                 FAQ
               </Nav.Link>
             </Nav>
+            {user.displayName ?<Nav className='me-auto'>
+              <Nav.Link as={Link} to="/myplans">
+                  My Plan's
+                </Nav.Link>
+                <Nav.Link as={Link} to="/manageplans">
+                  Manage Plans
+                </Nav.Link>
+                <Nav.Link as={Link} to="/addplan">
+                  Add Plan
+                </Nav.Link>
+            </Nav>
+            :
+            <div className='me-auto'></div>}
             <Nav>
               <Nav.Link disabled>{user ? user.displayName : ""}</Nav.Link>
               {user.displayName ? (

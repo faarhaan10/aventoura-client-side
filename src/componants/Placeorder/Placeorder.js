@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row , Col, Image, Form, FloatingLabel,Button} from "react-bootstrap";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 
@@ -11,8 +11,9 @@ const Placeorder = () => {
   const { id } = useParams();
 
   const {image,tourTitile,description,duration,price,location} = plan;
-const planId = id;
-const status = 'pending';
+  const planId = id;
+  const status = 'pending';
+  const history = useHistory();
 
   const onSubmit = data => {
     const newData = {planId,status,...data};
@@ -20,12 +21,15 @@ const status = 'pending';
 
     fetch('http://localhost:5000/tourists',{
       method:'POST',
-      headers:{'content-type':'application.json'},
+      headers:{'content-type':'application/json'},
       body: JSON.stringify(newData)
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      if(data.acknowledged){
+        alert('order pleced successfully');
+        history.push('/');
+      }
     })
   };
 
@@ -40,14 +44,12 @@ const status = 'pending';
 
   return (
     <div>
-      <h1>this is place order</h1>
-      <h2>id: {id}</h2>
       <Container>
         <Row className='align-items-center py-3'>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={6} className="px-5">
             <Image className='rounded-pill' fluid src={image} />
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={6} className="p-5">
             <h4>{tourTitile}</h4>
             <p>{description}</p>
             <small>Location: {location}</small>
@@ -87,7 +89,7 @@ const status = 'pending';
             </FloatingLabel>
           </Col>
 
-          <Button variant="warning" type='submit' className="w-25 mx-auto text-white px-5 py-3 fs-5 fw-bold"> Book now
+          <Button variant="warning" type='submit' className=" mx-auto text-white px-5 py-3 fs-5 fw-bold" style={{width:'15rem'}}> Book now
           </Button>
         </Row>
         </Form>}

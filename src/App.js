@@ -7,11 +7,16 @@ import Login from "./componants/Login/Login";
 import Placeorder from "./componants/Placeorder/Placeorder";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import PrivetRoute from "./componants/PrivetRoute/PrivetRoute";
+import ScrollToTop from "./componants/ScrollToTop/ScrollToTop";
+import MyPlans from "./componants/MyPlans/MyPlans";
+import ManagePlans from "./componants/ManagePlans/ManagePlans";
+import AddPlan from "./componants/AddPlan/AddPlan";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+          <ScrollToTop />
         <Header />
         <Switch>
           <Route path="/" exact>
@@ -29,6 +34,19 @@ function App() {
           <PrivetRoute path="/placeorder/:id">
             <Placeorder></Placeorder>
           </PrivetRoute>
+
+          <PrivetRoute path="/myplans">
+            <MyPlans></MyPlans>
+          </PrivetRoute>
+
+          <PrivetRoute path="/manageplans">
+            <ManagePlans></ManagePlans>
+          </PrivetRoute>
+
+          <PrivetRoute path="/manageplans">
+            <AddPlan></AddPlan>
+          </PrivetRoute>
+
         </Switch>
         <Footer></Footer>
       </BrowserRouter>
