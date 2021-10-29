@@ -7,19 +7,11 @@ const MyPlans = () => {
     const {user} = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tourists?email=${user.email}`)
+        fetch(`https://aventoura-server.herokuapp.com/tourists?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMyPlans(data))
 
     },[user.email]);
-
-// let count = 0;
-// const countNumber = n => count += n;
-
-
-
-
-
 
 
     return (

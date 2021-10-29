@@ -19,7 +19,7 @@ const Placeorder = () => {
     const newData = {planId,status,...data};
     console.log(newData);
 
-    fetch('http://localhost:5000/tourists',{
+    fetch('https://aventoura-server.herokuapp.com/tourists',{
       method:'POST',
       headers:{'content-type':'application/json'},
       body: JSON.stringify(newData)
@@ -36,7 +36,7 @@ const Placeorder = () => {
 
   // load single plan 
   useEffect( () => {
-    fetch(`http://localhost:5000/plans/${id}`)
+    fetch(`https://aventoura-server.herokuapp.com/plans/${id}`)
     .then(res => res.json())
     .then(data => setPlan(data))
   },[id])

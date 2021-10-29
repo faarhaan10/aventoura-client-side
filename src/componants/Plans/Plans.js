@@ -9,7 +9,7 @@ const Plans = () => {
   const size = 6;
   useEffect(()=>{
     setLoading(true)
-    fetch(`http://localhost:5000/plans?size=${size}`)
+    fetch(`https://aventoura-server.herokuapp.com/plans?size=${size}`)
     .then(res => res.json())
     .then(data => {
       setPlans(data);
