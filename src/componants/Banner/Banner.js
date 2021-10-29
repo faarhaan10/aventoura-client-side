@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
+import { HashLink } from "react-router-hash-link";
 import "./Banner.css";
 
 const Banner = () => {
@@ -15,18 +16,11 @@ const Banner = () => {
             Still no nightly rates, taxes, or fees, and now with more
             flexibility, value, and trips than ever before
           </p>
-          <Button
-            variant="warning"
-            className="text-white px-5 py-3 fw-bold me-2"
-          >
-            Book now
+          
+          <HashLink to="/home#plans">
+          <Button variant="warning" className="text-white px-5 py-3 fw-bold me-2"> Book now
           </Button>
-          <Button
-            variant="secondary"
-            className="text-white px-5 py-3 fw-bold me-2"
-          >
-            Discover more
-          </Button>
+          </HashLink>
         </div>
       </Container>
     </div>
