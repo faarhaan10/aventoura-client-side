@@ -74,6 +74,11 @@ const Placeorder = () => {
                 defaultValue={user.email}
                 {...register("email", { required: true })}/>
             </FloatingLabel>
+            <FloatingLabel label="Location" className="mb-3" >
+                <Form.Control type="text" placeholder="locationn" 
+                defaultValue={location}
+                {...register("location", { required: true })}/>
+            </FloatingLabel>
           </Col>
 
   {/* tour plan information */}
@@ -87,10 +92,9 @@ const Placeorder = () => {
                 <Form.Control type="date" placeholder="date"
                  {...register("date", { required: true })}/>
             </FloatingLabel>
+            <Form.Control type="submit" value="Book Now" className="bg-warning  text-white mb-3 py-3 fs-6 fw-bold"/>
+           
           </Col>
-
-          <Button variant="warning" type='submit' className=" mx-auto text-white px-5 py-3 fs-5 fw-bold" style={{width:'15rem'}}> Book now
-          </Button>
         </Row>
         </Form>}
       </Container>
