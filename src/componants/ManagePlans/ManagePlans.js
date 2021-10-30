@@ -1,37 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table , Button} from 'react-bootstrap';
+import { Container, Table, Button } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 
 const ManagePlans = () => {
     const [myPlans, setMyPlans] = useState([]);
-    const {user,setIsLoading} = useAuth();
+    const { user, setIsLoading } = useAuth();
 
     useEffect(() => {
-        fetch('http://localhost:5000/tourists')
-        .then(res => res.json())
-        .then(data => setMyPlans(data))
+        fetch('https://aventoura-server.herokuapp.com/tourists')
+            .then(res => res.json())
+            .then(data => setMyPlans(data))
 
-    },[user.email]);
+    }, [user.email]);
 
     // update status 
-    const handleUpdate = (id,status) => {
-        if(status !== 'accepted'){
-            const newStatus = {status:'accepted'};
+    const handleUpdate = (id, status) => {
+        if (status !== 'accepted') {
+            const newStatus = { status: 'accepted' };
             setIsLoading(true);
-            fetch(`http://localhost:5000/tourists/${id}`,{
-                method:'PUT',
-                headers:{'content-type':'application/json'},
+            fetch(`https://aventoura-server.herokuapp.com/tourists/${id}`, {
+                method: 'PUT',
+                headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(newStatus)
             })
-            .then(res => res.json())
-            .then(data => {
-                if(data.modifiedCount > 0){
-                    setIsLoading(false);
-                    alert('Accepted');
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        setIsLoading(false);
+                        alert('Accepted');
+                    }
+                })
         }
-        else{
+        else {
             alert('Already accepted')
         }
 
@@ -41,17 +41,17 @@ const ManagePlans = () => {
 
 
     const handleDelete = id => {
-        fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`,{
-            method:'DELETE'
+        fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`, {
+            method: 'DELETE'
         })
-        .then( res => res.json())
-        .then(data => {
-            if(data.deletedCount > 0){
-                alert('plan canceled succesfully');
-                const newPlans = myPlans.filter(pack => pack._id !== id);
-                setMyPlans(newPlans);
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    alert('plan canceled succesfully');
+                    const newPlans = myPlans.filter(pack => pack._id !== id);
+                    setMyPlans(newPlans);
+                }
+            })
     }
 
     return (
@@ -63,22 +63,22 @@ const ManagePlans = () => {
                 <Table striped bordered hover responsive>
                     <thead>
                         <tr className='text-center'>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Plan</th>
-                        <th>Location</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Accept/Cancel</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Plan</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Accept/Cancel</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            myPlans.map(planPackage => <tr style={{verticalAlign: 'text-top'}}
-                            key={planPackage._id}
+                            myPlans.map(planPackage => <tr style={{ verticalAlign: 'text-top' }}
+                                key={planPackage._id}
                             >
-                                <td>{myPlans.indexOf(planPackage)+1}</td>
+                                <td>{myPlans.indexOf(planPackage) + 1}</td>
                                 <td>{planPackage.name}</td>
                                 <td>{planPackage.email}</td>
                                 <td>{planPackage.plan}</td>
@@ -86,21 +86,21 @@ const ManagePlans = () => {
                                 <td>{planPackage.date}</td>
 
                                 <td className='text-center '>
-                                    <span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status==='pending'?{backgroundColor:'gray'}:{backgroundColor:'lime'}}
+                                    <span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status === 'pending' ? { backgroundColor: 'gray' } : { backgroundColor: 'lime' }}
                                     >
                                         {planPackage.status}
                                     </span>
                                 </td>
-                                
-                                <td className='text-center'>
-                                    <Button onClick={()=>{handleUpdate(planPackage._id,planPackage.status)}} variant="outline-success" ><i className="fas fa-check"></i></Button>
 
-                                    <Button onClick={()=>{handleDelete(planPackage._id)}} className="ms-2" variant="outline-danger" ><i className="fas fa-times"></i></Button>
-                                    </td>
+                                <td className='text-center'>
+                                    <Button onClick={() => { handleUpdate(planPackage._id, planPackage.status) }} variant="outline-success" ><i className="fas fa-check"></i></Button>
+
+                                    <Button onClick={() => { handleDelete(planPackage._id) }} className="ms-2" variant="outline-danger" ><i className="fas fa-times"></i></Button>
+                                </td>
                             </tr>)
                         }
                     </tbody>
-                </Table>                    
+                </Table>
             </Container>
         </div>
     );

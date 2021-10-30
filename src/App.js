@@ -10,13 +10,14 @@ import PrivetRoute from "./componants/PrivetRoute/PrivetRoute";
 import ScrollToTop from "./componants/ScrollToTop/ScrollToTop";
 import MyPlans from "./componants/MyPlans/MyPlans";
 import ManagePlans from "./componants/ManagePlans/ManagePlans";
-import AddPlan from "./componants/AddPlan/AddPlan";
+import AddPackage from "./componants/AddPackage/AddPackage";
+import Packages from "./componants/Packages/Packages";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-          <ScrollToTop />
+        <ScrollToTop />
         <Header />
         <Switch>
           <Route path="/" exact>
@@ -35,6 +36,10 @@ function App() {
             <Placeorder></Placeorder>
           </PrivetRoute>
 
+          <PrivetRoute path="/packages">
+            <Packages></Packages>
+          </PrivetRoute>
+
           <PrivetRoute path="/myplans">
             <MyPlans></MyPlans>
           </PrivetRoute>
@@ -43,8 +48,8 @@ function App() {
             <ManagePlans></ManagePlans>
           </PrivetRoute>
 
-          <PrivetRoute path="/manageplans">
-            <AddPlan></AddPlan>
+          <PrivetRoute path="/addpackage">
+            <AddPackage></AddPackage>
           </PrivetRoute>
 
         </Switch>
