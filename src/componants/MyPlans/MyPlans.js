@@ -34,7 +34,7 @@ const MyPlans = () => {
                 <div className="bg-warning text-center py-3 text-white rounded-3 my-3">
                     <h1>Hello {user.displayName}. Here's Your Tour Plan's</h1>
                 </div>
-                <Table striped bordered hover>
+                <Table striped bordered hover responsive>
                     <thead>
                         <tr className='text-center'>
                         <th>#</th>
