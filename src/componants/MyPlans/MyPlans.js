@@ -54,7 +54,13 @@ const MyPlans = () => {
                                 <td>{planPackage.plan}</td>
                                 <td>{planPackage.location}</td>
                                 <td>{planPackage.date}</td>
-                                <td className='text-center '><span className="bg-success  p-2 text-white rounded-pill text-uppercase fw-bold">{planPackage.status}</span></td>
+
+                                <td className='text-center '>
+                                    <span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status==='pending'?{backgroundColor:'gray'}:{backgroundColor:'lime'}}
+                                    >
+                                        {planPackage.status}
+                                    </span>
+                                </td>
                                 <td className='text-center'><Button variant="outline-danger" onClick={()=>{handleDelete(planPackage._id)}}>Danger</Button></td>
                             </tr>)
                         }

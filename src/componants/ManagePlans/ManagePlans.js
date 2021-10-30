@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth';
 
 const ManagePlans = () => {
     const [myPlans, setMyPlans] = useState([]);
-    const {user} = useAuth();
+    const {user,setIsLoading} = useAuth();
 
     useEffect(() => {
         fetch('http://localhost:5000/tourists')
@@ -14,15 +14,27 @@ const ManagePlans = () => {
     },[user.email]);
 
     // update status 
-    const handleUpdate = id => {
-        const newStatus = 'accepted';
-        fetch(`http://localhost:5000/tourist/${id}`,{
-            method:'PUT',
-            headers:{'content-type':'application/json'},
-            body: JSON.stringify(newStatus)
-        })
-        .then(res => res.json)
-        .then(data => console.log(data))
+    const handleUpdate = (id,status) => {
+        if(status !== 'accepted'){
+            const newStatus = {status:'accepted'};
+            setIsLoading(true);
+            fetch(`http://localhost:5000/tourists/${id}`,{
+                method:'PUT',
+                headers:{'content-type':'application/json'},
+                body: JSON.stringify(newStatus)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.modifiedCount > 0){
+                    setIsLoading(false);
+                    alert('Accepted');
+                }
+            })
+        }
+        else{
+            alert('Already accepted')
+        }
+
     }
 
 
@@ -72,9 +84,16 @@ const ManagePlans = () => {
                                 <td>{planPackage.plan}</td>
                                 <td>{planPackage.location}</td>
                                 <td>{planPackage.date}</td>
-                                <td className='text-center '><span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status==='pending'?{backgroundColor:'gray'}:{backgroundColor:'lime'}}>{planPackage.status}</span></td>
+
+                                <td className='text-center '>
+                                    <span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status==='pending'?{backgroundColor:'gray'}:{backgroundColor:'lime'}}
+                                    >
+                                        {planPackage.status}
+                                    </span>
+                                </td>
+                                
                                 <td className='text-center'>
-                                    <Button onClick={()=>{handleUpdate(planPackage._id)}} variant="outline-success" ><i className="fas fa-check"></i></Button>
+                                    <Button onClick={()=>{handleUpdate(planPackage._id,planPackage.status)}} variant="outline-success" ><i className="fas fa-check"></i></Button>
 
                                     <Button onClick={()=>{handleDelete(planPackage._id)}} className="ms-2" variant="outline-danger" ><i className="fas fa-times"></i></Button>
                                     </td>
