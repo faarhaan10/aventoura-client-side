@@ -41,17 +41,21 @@ const ManagePlans = () => {
 
 
     const handleDelete = id => {
-        fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    alert('plan canceled succesfully');
-                    const newPlans = myPlans.filter(pack => pack._id !== id);
-                    setMyPlans(newPlans);
-                }
+        const proceed = window.confirm('Are you sure, you want to cancel the tour!?')
+        if (proceed) {
+            fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`, {
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('plan canceled succesfully');
+                        const newPlans = myPlans.filter(pack => pack._id !== id);
+                        setMyPlans(newPlans);
+                    }
+                })
+        }
+
     }
 
     return (
@@ -93,9 +97,20 @@ const ManagePlans = () => {
                                 </td>
 
                                 <td className='text-center'>
-                                    <Button onClick={() => { handleUpdate(planPackage._id, planPackage.status) }} variant="outline-success" ><i className="fas fa-check"></i></Button>
+                                    <Button
+                                        style={{ width: '2.5rem' }}
+                                        onClick={() => { handleUpdate(planPackage._id, planPackage.status) }}
+                                        variant="outline-success" >
+                                        <i className="fas fa-check"></i>
+                                    </Button>
 
-                                    <Button onClick={() => { handleDelete(planPackage._id) }} className="ms-2" variant="outline-danger" ><i className="fas fa-times"></i></Button>
+                                    <Button
+                                        style={{ width: '2.5rem' }}
+                                        onClick={() => { handleDelete(planPackage._id) }}
+                                        className="ms-2"
+                                        variant="outline-danger" >
+                                        <i className="fas fa-times"></i>
+                                    </Button>
                                 </td>
                             </tr>)
                         }

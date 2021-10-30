@@ -9,7 +9,7 @@ const Packages = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetch(`https://aventoura-server.herokuapp.com/plans`)
+        fetch(`https://aventoura-server.herokuapp.com/packages`)
             .then(res => res.json())
             .then(data => {
                 setPackages(data);

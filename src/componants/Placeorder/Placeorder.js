@@ -36,7 +36,7 @@ const Placeorder = () => {
 
   // load single plan 
   useEffect(() => {
-    fetch(`https://aventoura-server.herokuapp.com/plans/${id}`)
+    fetch(`https://aventoura-server.herokuapp.com/packages/${id}`)
       .then(res => res.json())
       .then(data => setPlan(data))
   }, [id])

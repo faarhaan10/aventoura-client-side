@@ -1,17 +1,28 @@
 import React from 'react';
-import { Col, Container, FloatingLabel, Form, Row, Button } from 'react-bootstrap';
+import { Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const AddPackage = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data)
 
+        fetch('https://aventoura-server.herokuapp.com/packages', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Package Added Succesfully');
+                    reset();
+                }
+            })
     }
 
     return (
-        <div className='vh-100 '>
+        <div>
             <Container>
                 <div className="bg-warning text-center py-3 text-white rounded-3 my-3">
                     <h1>Add Tour Package</h1>
