@@ -14,7 +14,7 @@ const MyPlans = () => {
     },[user.email]);
 
     const handleDelete = id => {
-        fetch(`https://aventoura-server.herokuapp.com/${id}`,{
+        fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`,{
             method:'DELETE'
         })
         .then( res => res.json())
