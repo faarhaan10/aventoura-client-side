@@ -18,7 +18,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
           <Navbar.Collapse id="responsive-navbar-nav" className="fw-bold">
-            <Nav className=" align-items-center">
+            <Nav>
               <Nav.Link as={Link} to="/home">
                 Home
               </Nav.Link>
@@ -43,7 +43,7 @@ const Header = () => {
               :
               <div className='me-auto'></div>}
             <Nav>
-              <Nav.Link disabled>{user ? user.displayName : ""}</Nav.Link>
+              <Nav.Link disabled className='text-dark'>{user ? user.displayName : ""}</Nav.Link>
               {user.displayName ? (
                 <Button onClick={handleLogOut} variant="outline-danger">
                   Sign out

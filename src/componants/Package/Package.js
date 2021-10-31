@@ -49,7 +49,7 @@ const Package = () => {
                 key={plan._id}
                 className="d-flex justify-content-center"
               >
-                <Card style={{ width: '22rem' }} className='my-3'>
+                <Card style={{ width: '22rem' }} className='my-3 aventoura-shadow'>
                   <Card.Img variant="top" style={imageSize} className='p-2 mx-auto' src={plan.image} />
 
                   <Card.Body className='text-center'>

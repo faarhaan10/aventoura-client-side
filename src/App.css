@@ -2,10 +2,14 @@
   text-align: center;
 }
 .aventoura-color{
-  color: gold;
+  color: gold !important;
 }
 .aventoura-color-bg{
-  background-color: gold;
+  background-color: gold !important;
+}
+.aventoura-shadow:hover{
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 20px !important;
+  transition: box-shadow ease-in-out .3s;
 }
 .App-logo {
   height: 40vmin;

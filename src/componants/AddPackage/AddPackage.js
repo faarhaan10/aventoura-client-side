@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 const AddPackage = () => {
     const [loading, setLoading] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+
+    // post new package to db 
     const onSubmit = data => {
         setLoading(true)
         fetch('https://aventoura-server.herokuapp.com/packages', {
@@ -77,11 +79,11 @@ const AddPackage = () => {
                         </Row>
                         <div className="d-flex justify-content-center flex-wrap">
                             <div className="me-1">
-                                <Form.Control type="submit" value="Add Package" className="bg-primary text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
+                                <Form.Control type="submit" value="Add Package" className="bg-warning text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
                             </div>
-                            <div className="">
-                                <Link to='/packages'>
-                                    <Form.Control type="button" value="See all" className="bg-primary text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
+                            <div>
+                                <Link to='/packages' className="text-decoration-none">
+                                    <Form.Control type="button" value="See All" className="bg-warning text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
 
                                 </Link>
                             </div>

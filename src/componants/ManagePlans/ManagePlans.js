@@ -7,6 +7,7 @@ const ManagePlans = () => {
     const [loading, setLoading] = useState(true);
     const { user, setIsLoading } = useAuth();
 
+    // load data from db 
     useEffect(() => {
         setLoading(true)
         fetch('https://aventoura-server.herokuapp.com/tourists')
@@ -40,7 +41,7 @@ const ManagePlans = () => {
 
     }
 
-
+    // handle delete operation 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel the tour!?')
         if (proceed) {
@@ -62,7 +63,7 @@ const ManagePlans = () => {
 
     if (loading) {
         return (
-            <div className="d-flex justify-content-center align-items-center  vh-100">
+            <div className="d-flex justify-content-center align-items-center vh-100">
                 <div className="">
                     <Spinner className="p-5" animation="grow" variant="info" />
                 </div>

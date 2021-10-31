@@ -18,8 +18,8 @@ const Placeorder = () => {
 
   const onSubmit = data => {
     const newData = { planId, status, ...data };
-    console.log(newData);
 
+    // send post request to db 
     fetch('https://aventoura-server.herokuapp.com/tourists', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -44,6 +44,7 @@ const Placeorder = () => {
       .finally(() => setLoading(false))
   }, [id])
 
+  // if loading show spinner 
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center  vh-100">

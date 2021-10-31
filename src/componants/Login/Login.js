@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const { handleGoogleSignIn, setError, setIsLoading } = useAuth();
+  const { handleGoogleSignIn, setError, setIsLoading, error } = useAuth();
   const location = useLocation();
   const history = useHistory();
   const redirect_uri = location.state?.from || "/";
@@ -25,22 +25,24 @@ const Login = () => {
     <div>
       <Container>
         <div className="d-flex justify-content-center align-items-center  vh-100">
-          <div className="p-5 border text-center bg-white rounded">
+          <div className="p-5 aventoura-shadow shadow border text-center bg-white rounded-3">
             <Image fluid src="https://i.ibb.co/ZdNnN5K/image.png" />
             <hr />
-            <div className="pt-5">
+            <div className="p-5">
               <Image
                 fluid
                 src="https://www.google.com/images/hpp/gsa_super_g-64.gif"
               />
+              <br />
               <Button
+                variant='warning'
+                className=" text-white my-3 fs-6 fw-bold"
                 onClick={handleGoogleLogIn}
-                variant="primary"
-                className="my-5 border"
               >
-                sign in with Google
+                Continue With Google
               </Button>
             </div>
+            <small className='text-danger fw-bold'>{error}</small>
           </div>
         </div>
       </Container>

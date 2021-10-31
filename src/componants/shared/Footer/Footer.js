@@ -12,7 +12,7 @@ const Footer = () => {
             <p className="mt-3 text-secondary">
               The world’s first luxury travel subscription just got even better.
               Still no nightly rates, taxes, or fees, and now with more
-              flexibility, value, and trips than ever befor
+              flexibility, value, and trips than ever before
             </p>
           </Col>
           <Col xs={12} md={6} lg={2}>
@@ -65,7 +65,7 @@ const Footer = () => {
         </Row>
         <hr />
         <p className="text-center">
-          Copyright &copy; 2021 Aventoura; A Programing Hero Initiative
+          Copyright &copy; 2021 <span className="aventoura-color">Aventoura</span> . A Programing Hero Initiative
         </p>
       </Container>
     </div>

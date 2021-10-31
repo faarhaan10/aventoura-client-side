@@ -8,30 +8,35 @@ const MyPlans = () => {
     const [loading, setLoading] = useState(true);
     const { user } = useAuth();
 
+    // load data using email query 
     useEffect(() => {
         setLoading(true)
         fetch(`https://aventoura-server.herokuapp.com/tourists?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyPlans(data);
-                console.log(data)
                 setLoading(false);
             })
 
     }, [user.email]);
 
+    // handle delete from db 
     const handleDelete = id => {
-        fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    alert('plan canceled succesfully');
-                    const newPlans = myPlans.filter(pack => pack._id !== id);
-                    setMyPlans(newPlans);
-                }
+        const proceed = window.confirm('Are you sure, you want to cancel the tour!?')
+        if (proceed) {
+            fetch(`https://aventoura-server.herokuapp.com/tourist/${id}`, {
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('plan canceled succesfully');
+                        const newPlans = myPlans.filter(pack => pack._id !== id);
+                        setMyPlans(newPlans);
+                    }
+                })
+        }
+
     }
 
     if (loading) {
