@@ -5,7 +5,7 @@ const Faq = () => {
   return (
     <div id="faq" className='pt-5'>
       <Container>
-        <div className="text-center pt-5">
+        <div className="pt-5">
           <h5 className="text-warning">FAQ</h5>
           <h1 className="fs-1  fw-bolder">Frequently Ask Questions</h1>
         </div>
@@ -18,7 +18,7 @@ const Faq = () => {
               <Accordion.Item eventKey="0">
                 <Accordion.Header><strong>What is Aventoura?</strong></Accordion.Header>
                 <Accordion.Body className="fw-bold">
-                  Aventoura is a platform which allows you to create bookable experiences that travelers around the world can buy online, from guided tours to surf lessons—and everything in between. Suppliers who sell products with us reach customers via Tripadvisor, the Tripadvisor App, Aventoura.com and thousands more partner sites.
+                  Aventoura is a platform which allows you to travell all over the world with your family and friends, at low cost of travelling. We provides family friendly tours. We are happy to inform you that, we provides local people's. He/She will guide to the touring spot and help you to enjoy your vaccation
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">

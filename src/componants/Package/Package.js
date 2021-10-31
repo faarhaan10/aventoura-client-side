@@ -37,7 +37,7 @@ const Package = () => {
   return (
     <div id="packages">
       <Container>
-        <div className="text-center pt-5">
+        <div className="pt-5">
           <h5 className="text-warning">FEATURED TOUR</h5>
           <h1 className="fs-1  fw-bolder">Popular Tour Package Plans</h1>
         </div>

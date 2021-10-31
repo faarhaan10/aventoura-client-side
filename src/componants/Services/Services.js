@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Services = () => {
   return (
     <div id="services">
-      <Container className='py-5'>
-        <div className="text-center pt-5">
+      <Container className='pt-5'>
+        <div className="">
           <h5 className="text-warning">FEATURED</h5>
           <h1 className="fs-1  fw-bolder">Explore new worlds with us</h1>
         </div>
