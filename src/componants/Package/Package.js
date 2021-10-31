@@ -51,20 +51,26 @@ const Package = () => {
               >
                 <Card style={{ width: '22rem' }} className='my-3'>
                   <Card.Img variant="top" style={imageSize} className='p-2 mx-auto' src={plan.image} />
+
                   <Card.Body className='text-center'>
-                    <Card.Title>{plan.tourTitle}</Card.Title>
+                    <Card.Title className='text-warning fw-bold'>{plan.tourTitle}</Card.Title>
+
                     <Card.Text>{plan.description.slice(0, 70)}...
                     </Card.Text>
+
                     <Link to={`/placeorder/${plan._id}`}>
                       <Button variant="warning" className="text-white px-5 py-2 fw-bold me-2" >Book</Button>
                     </Link>
+
                   </Card.Body>
+
                   <Card.Footer>
-                    <div className="d-flex justify-content-between">
-                      <span><i className="fas fa-map-marker-alt"></i> {plan.location}</span>
-                      <span><i className="far fa-clock"></i> {plan.duration} Days</span>
+                    <div className="d-flex justify-content-between fw-bold">
+                      <span><i className="aventoura-color fas fa-map-marker-alt"></i> {plan.location}</span>
+                      <span><i className="aventoura-color far fa-clock"></i> {plan.duration} Days</span>
                     </div>
                   </Card.Footer>
+
                 </Card>
               </Col>)
             }

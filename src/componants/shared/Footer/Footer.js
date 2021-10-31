@@ -16,7 +16,7 @@ const Footer = () => {
             </p>
           </Col>
           <Col xs={12} md={6} lg={2}>
-            <h5 className="mb-3">Company</h5>
+            <h5 className="mb-3 aventoura-color">Company</h5>
 
             <Nav className="flex-column">
               <Nav.Link as={Link} to="/" className="py-0 text-white">
@@ -34,7 +34,7 @@ const Footer = () => {
             </Nav>
           </Col>
           <Col xs={12} md={6} lg={2}>
-            <h5 className="mb-3">Support</h5>
+            <h5 className="mb-3 aventoura-color">Support</h5>
             <Nav className="flex-column">
               <Nav.Link as={Link} to="/" className="py-0 text-white">
                 Help Center
@@ -51,7 +51,7 @@ const Footer = () => {
             </Nav>
           </Col>
           <Col xs={12} md={6} lg={4}>
-            <h5 className="mb-3">Office</h5>
+            <h5 className="mb-3 aventoura-color">Office</h5>
             <Nav className="flex-column">
               <Nav.Link as={Link} to="/" className="py-0 text-white">
                 Aventoura, Dhanmandi, Dhaka, Bangladesh

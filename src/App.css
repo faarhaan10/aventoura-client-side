@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
-
+.aventoura-color{
+  color: gold;
+}
+.aventoura-color-bg{
+  background-color: gold;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
