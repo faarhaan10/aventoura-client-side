@@ -12,6 +12,7 @@ import MyPlans from "./componants/MyPlans/MyPlans";
 import ManagePlans from "./componants/ManagePlans/ManagePlans";
 import AddPackage from "./componants/AddPackage/AddPackage";
 import Packages from "./componants/Packages/Packages";
+import NotFound from "./componants/NotFound/NotFound";
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
           <PrivetRoute path="/addpackage">
             <AddPackage></AddPackage>
           </PrivetRoute>
+          <Route path="*">
+            <NotFound></NotFound>
+          </Route>
 
         </Switch>
         <Footer></Footer>
