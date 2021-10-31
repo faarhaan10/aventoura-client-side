@@ -30,7 +30,6 @@ const Packages = () => {
     }
     console.log(packages.length)
     const imageSize = {
-        width: '334px',
         height: '234px',
         objectFit: 'cover'
     }
@@ -50,9 +49,9 @@ const Packages = () => {
                                 className="d-flex justify-content-center"
                             >
                                 <Card style={{ width: '22rem' }} className='my-3'>
-                                    <Card.Img variant="top" style={imageSize} className='pt-2 mx-auto' src={plan.image} />
+                                    <Card.Img variant="top" style={imageSize} className='p-2 mx-auto' src={plan.image} />
                                     <Card.Body className='text-center'>
-                                        <Card.Title>{plan.tourTitile}</Card.Title>
+                                        <Card.Title>{plan.tourTitle}</Card.Title>
                                         <Card.Text>{plan.description.slice(0, 70)}...
                                         </Card.Text>
                                         <Link to={`/placeorder/${plan._id}`}>

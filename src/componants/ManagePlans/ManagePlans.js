@@ -86,7 +86,7 @@ const ManagePlans = () => {
                                 <th>Location</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                <th>Accept/Cancel</th>
+                                <th>Approve/Cancel</th>
                             </tr>
                         </thead>
                         <tbody>

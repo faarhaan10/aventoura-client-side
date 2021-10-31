@@ -11,7 +11,7 @@ const Placeorder = () => {
   const { user } = useAuth();
   const { id } = useParams();
 
-  const { image, tourTitile, description, duration, price, location } = plan;
+  const { image, tourTitle, description, duration, price, location } = plan;
   const planId = id;
   const status = 'pending';
   const history = useHistory();
@@ -62,7 +62,7 @@ const Placeorder = () => {
             <Image className='p-2 border rounded-3 shadow' fluid src={image} />
           </Col>
           <Col xs={12} md={6} className="py-5 px-3">
-            <h4>{tourTitile}</h4>
+            <h4>{tourTitle}</h4>
             <p>{description}</p>
             <small>Location: {location}</small>
             <h5>You can stay <span className="text-warning fw-bold">{duration} days and {duration - 1} nights</span> in this tour.</h5>
@@ -72,7 +72,7 @@ const Placeorder = () => {
         </Row>
 
         {/* order placement form  */}
-        {tourTitile && <Form onSubmit={handleSubmit(onSubmit)}>
+        {tourTitle && <Form onSubmit={handleSubmit(onSubmit)}>
           <Row className='align-items-center py-3'>
             {/* mailing information */}
             <Col xs={12} md={6} className="px-5">
@@ -97,7 +97,7 @@ const Placeorder = () => {
             <Col xs={12} md={6} className="px-5">
               <FloatingLabel label="Tour Package" className="mb-3" >
                 <Form.Control type="text" placeholder="plan"
-                  defaultValue={tourTitile}
+                  defaultValue={tourTitle}
                   {...register("plan", { required: true })} />
               </FloatingLabel>
               <FloatingLabel label="Date" className="mb-3" >

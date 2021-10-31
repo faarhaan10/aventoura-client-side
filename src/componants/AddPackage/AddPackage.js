@@ -44,7 +44,7 @@ const AddPackage = () => {
                         <Row className="g-2">
                             <Col xs={12} md={6}>
                                 <FloatingLabel label="Tour Title">
-                                    <Form.Control type="text" placeholder="title" {...register("tourTitile", { required: true })} />
+                                    <Form.Control type="text" placeholder="title" {...register("tourTitle", { required: true })} />
                                 </FloatingLabel>
                             </Col>
                             <Col xs={12} md={6}>
