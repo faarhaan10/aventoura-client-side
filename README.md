@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Welcome to Aventoura Tour & Travells
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is live at: https://aventoura-b977d.web.app/
 
-## Available Scripts
+### About this project:
+This is a amazing project created with some codes and hard-workfull mentality, nothing else.  Combination of all fucntionlities are seems difficult, But was far easier than I think at first time. Anyway this is a `web-app` about `tours & travells`. You can visit on this web-app here: https://aventoura-b977d.web.app/ . But rememdber you cannot visit all routes because some routes are `privet-route`, you have to `login` first to visit. Dont worry about your information. Its `authenticated` with `google` and `git-hub` using `firebase` Thats it. All data using in this web app are hosted in `mongo db`. I used to make some api for `create`, `read`, `update`, and `delete` operation performs for the client side.
 
-In the project directory, you can run:
 
-### `npm start`
+### Fucntionalities
+- its a `react` application
+- `react-router-dom`
+- `privet/protected-route`
+- `react-bootstrap-componant`
+- `express`
+- `mongodb`
+- `firebase` authenticaton
+- `firebase` deploy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In this web app, user can book desired location to visit the place. He/She can also withdraw his/her request to cancel the tour at the `My Plan's` tab. The admin can handle all request and perform cancel any request, approve any requst at the `Manage Plan's` tab. The admin can also add tour package in the `Add Package` tab.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Some Extras
+- mouseover animation
+- font-awesome
+- react-hook-form
+- multiple account creation
+- tables
+- admin management
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### About me
+👋 Hi, I’m Farhan Elias
+👀 I’m interested in Web Programming
+🌱 I’m currently learning JS, React
+💞️ I’m looking to collaborate on competetive problem solving
+📫 Get in touch with me on FB: https://www.facebook.com/faarhaan10/ Mail: www.faarhaan10@gmail.com
