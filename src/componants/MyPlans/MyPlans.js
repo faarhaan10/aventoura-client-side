@@ -51,7 +51,7 @@ const MyPlans = () => {
 
     return (
         <div>
-            <Container className='vh-100'>
+            <Container className='vh-100 pt-5'>
                 <div className="bg-warning text-center py-3 text-white rounded-3 my-3">
                     <h1>Hello {user.displayName}. Here's Your Tour Plan's</h1>
                 </div>
