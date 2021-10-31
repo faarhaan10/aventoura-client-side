@@ -16,10 +16,10 @@ const Banner = () => {
             Still no nightly rates, taxes, or fees, and now with more
             flexibility, value, and trips than ever before
           </p>
-          
-          <HashLink to="/home#plans">
-          <Button variant="warning" className="text-white px-5 py-3 fw-bold me-2"> Book now
-          </Button>
+
+          <HashLink to="/home#packages">
+            <Button variant="warning" className="text-white px-5 py-3 fw-bold me-2"> Book now
+            </Button>
           </HashLink>
         </div>
       </Container>

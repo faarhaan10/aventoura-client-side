@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Image, Form, FloatingLabel } from "react-bootstrap";
+import { Container, Row, Col, Image, Form, FloatingLabel, Spinner } from "react-bootstrap";
 import { useHistory, useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 
 const Placeorder = () => {
   const [plan, setPlan] = useState({});
+  const [loading, setLoading] = useState(true);
   const { register, handleSubmit } = useForm();
   const { user } = useAuth();
   const { id } = useParams();
@@ -28,7 +29,7 @@ const Placeorder = () => {
       .then(data => {
         if (data.acknowledged) {
           alert('order pleced successfully');
-          history.push('/');
+          history.push('/myplans');
         }
       })
   };
@@ -36,20 +37,31 @@ const Placeorder = () => {
 
   // load single plan 
   useEffect(() => {
+    setLoading(true);
     fetch(`https://aventoura-server.herokuapp.com/packages/${id}`)
       .then(res => res.json())
       .then(data => setPlan(data))
+      .finally(() => setLoading(false))
   }, [id])
 
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center  vh-100">
+        <div className="">
+          <Spinner className="p-5" animation="grow" variant="info" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
       <Container>
-        <Row className='align-items-center py-3'>
-          <Col xs={12} md={6} className="px-5">
-            <Image className='rounded-pill' fluid src={image} />
+        <Row className='align-items-center py-5'>
+          <Col xs={12} md={6} className="px-3">
+            <Image className='p-2 border rounded-3 shadow' fluid src={image} />
           </Col>
-          <Col xs={12} md={6} className="p-5">
+          <Col xs={12} md={6} className="py-5 px-3">
             <h4>{tourTitile}</h4>
             <p>{description}</p>
             <small>Location: {location}</small>

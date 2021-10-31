@@ -1,12 +1,13 @@
-import React from 'react';
-import { Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Container, FloatingLabel, Form, Row, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const AddPackage = () => {
+    const [loading, setLoading] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-
+        setLoading(true)
         fetch('https://aventoura-server.herokuapp.com/packages', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
@@ -19,6 +20,17 @@ const AddPackage = () => {
                     reset();
                 }
             })
+            .finally(() => setLoading(false))
+    }
+
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center  vh-100">
+                <div className="">
+                    <Spinner className="p-5" animation="grow" variant="info" />
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -63,14 +75,14 @@ const AddPackage = () => {
                                 </FloatingLabel>
                             </Col>
                         </Row>
-                        <div className="d-flex justify-content-center">
-                            <div className='mx-2'>
-                                <Form.Control type="submit" value="Add Package" className="bg-primary mx-auto text-white my-3 py-3 fs-6 fw-bold" style={{ width: '16rem' }} />
+                        <div className="d-flex justify-content-center flex-wrap">
+                            <div className="me-1">
+                                <Form.Control type="submit" value="Add Package" className="bg-primary text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
                             </div>
-                            <div className='mx-2'>
-
+                            <div className="">
                                 <Link to='/packages'>
-                                    <Form.Control type="button" value="See all" className="bg-primary mx-auto text-white my-3 py-3 fs-6 fw-bold" style={{ width: '16rem' }} />
+                                    <Form.Control type="button" value="See all" className="bg-primary text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
+
                                 </Link>
                             </div>
                         </div>

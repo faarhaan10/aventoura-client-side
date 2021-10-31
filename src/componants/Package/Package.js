@@ -20,7 +20,7 @@ const Package = () => {
 
   if (loading) {
     return (
-      <div id="plans" className="d-flex justify-content-center align-items-center  vh-100">
+      <div id="packages" className="d-flex justify-content-center align-items-center  vh-100">
         <div className="">
           <Spinner className="p-5" animation="grow" variant="info" />
         </div>

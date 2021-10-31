@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table, Button } from 'react-bootstrap';
+import { Container, Table, Button, Spinner } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 
 const ManagePlans = () => {
     const [myPlans, setMyPlans] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { user, setIsLoading } = useAuth();
 
     useEffect(() => {
+        setLoading(true)
         fetch('https://aventoura-server.herokuapp.com/tourists')
             .then(res => res.json())
             .then(data => setMyPlans(data))
+            .finally(() => setLoading(false))
 
     }, [user.email]);
 
     // update status 
     const handleUpdate = (id, status) => {
-        if (status !== 'accepted') {
-            const newStatus = { status: 'accepted' };
+        if (status !== 'approved') {
+            const newStatus = { status: 'approved' };
             setIsLoading(true);
             fetch(`https://aventoura-server.herokuapp.com/tourists/${id}`, {
                 method: 'PUT',
@@ -26,18 +29,16 @@ const ManagePlans = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.modifiedCount > 0) {
-                        setIsLoading(false);
-                        alert('Accepted');
+                        alert('Approved');
                     }
                 })
+                .finally(() => setIsLoading(false))
         }
         else {
-            alert('Already accepted')
+            alert('Already approved')
         }
 
     }
-
-
 
 
     const handleDelete = id => {
@@ -58,64 +59,76 @@ const ManagePlans = () => {
 
     }
 
+
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center  vh-100">
+                <div className="">
+                    <Spinner className="p-5" animation="grow" variant="info" />
+                </div>
+            </div>
+        );
+    }
     return (
         <div>
-            <Container>
+            <Container className='vh-100'>
                 <div className="bg-warning text-center py-3 text-white rounded-3 my-3">
                     <h1>Hello {user.displayName}. Wellcome to Dashboard</h1>
                 </div>
-                <Table striped bordered hover responsive>
-                    <thead>
-                        <tr className='text-center'>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Plan</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Accept/Cancel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            myPlans.map(planPackage => <tr style={{ verticalAlign: 'text-top' }}
-                                key={planPackage._id}
-                            >
-                                <td>{myPlans.indexOf(planPackage) + 1}</td>
-                                <td>{planPackage.name}</td>
-                                <td>{planPackage.email}</td>
-                                <td>{planPackage.plan}</td>
-                                <td>{planPackage.location}</td>
-                                <td>{planPackage.date}</td>
+                <div className='h-75 overflow-auto'>
+                    <Table striped bordered hover responsive>
+                        <thead>
+                            <tr className='text-center'>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Plan</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Accept/Cancel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                myPlans.map(planPackage => <tr style={{ verticalAlign: 'text-top' }}
+                                    key={planPackage._id}
+                                >
+                                    <td>{myPlans.indexOf(planPackage) + 1}</td>
+                                    <td>{planPackage.name}</td>
+                                    <td>{planPackage.email}</td>
+                                    <td>{planPackage.plan}</td>
+                                    <td>{planPackage.location}</td>
+                                    <td>{planPackage.date}</td>
 
-                                <td className='text-center '>
-                                    <span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status === 'pending' ? { backgroundColor: 'gray' } : { backgroundColor: 'lime' }}
-                                    >
-                                        {planPackage.status}
-                                    </span>
-                                </td>
+                                    <td className='text-center '>
+                                        <span className=" px-2 text-white rounded-pill text-uppercase fw-bold" style={planPackage.status === 'pending' ? { backgroundColor: 'gray' } : { backgroundColor: 'lime' }}
+                                        >
+                                            {planPackage.status}
+                                        </span>
+                                    </td>
 
-                                <td className='text-center'>
-                                    <Button
-                                        style={{ width: '2.5rem' }}
-                                        onClick={() => { handleUpdate(planPackage._id, planPackage.status) }}
-                                        variant="outline-success" >
-                                        <i className="fas fa-check"></i>
-                                    </Button>
+                                    <td className='text-center'>
+                                        <Button
+                                            style={{ width: '2.5rem' }}
+                                            onClick={() => { handleUpdate(planPackage._id, planPackage.status) }}
+                                            variant="outline-success" >
+                                            <i className="fas fa-check"></i>
+                                        </Button>
 
-                                    <Button
-                                        style={{ width: '2.5rem' }}
-                                        onClick={() => { handleDelete(planPackage._id) }}
-                                        className="ms-2"
-                                        variant="outline-danger" >
-                                        <i className="fas fa-times"></i>
-                                    </Button>
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </Table>
+                                        <Button
+                                            style={{ width: '2.5rem' }}
+                                            onClick={() => { handleDelete(planPackage._id) }}
+                                            className="ms-2"
+                                            variant="outline-danger" >
+                                            <i className="fas fa-times"></i>
+                                        </Button>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </Table>
+                </div>
             </Container>
         </div>
     );
