@@ -36,7 +36,7 @@ const AddPackage = () => {
     }
 
     return (
-        <div className="pt-5">
+        <div className="pt-3">
             <Container>
                 <div className="bg-warning text-center py-3 text-white rounded-3 my-3">
                     <h1>Add Tour Package</h1>
