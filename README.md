@@ -5,8 +5,16 @@ This project is live at: https://aventoura-b977d.web.app/
 ### About this project:
 This is a amazing project created with some codes and hard-workfull mentality, nothing else.  Combination of all fucntionlities are seems difficult, But was far easier than I think at first time. Anyway this is a `web-app` about `tours & travells`. You can visit on this web-app here: https://aventoura-b977d.web.app/ . But rememdber you cannot visit all routes because some routes are `privet-route`, you have to `login` first to visit. Dont worry about your information. Its `authenticated` with `google` and `git-hub` using `firebase` Thats it. All data using in this web app are hosted in `mongo db`. I used to make some api for `create`, `read`, `update`, and `delete` operation performs for the client side.
 
+### Fuctionalities
+-	Users can sign-in with Google.
+-	Can book desired tour plan.
+-	Users can see and cancel his/her tour plans.
+-	Admin can update tour status, add new plan, delete users tour plan.
+-	Sign-in users only can seen main fuctionalities on this website.
+-	Admin route is protected.
 
-### Fucntionalities
+
+### Technologies
 - its a `react` application
 - `react-router-dom`
 - `privet/protected-route`
