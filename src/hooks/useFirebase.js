@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   getAuth,
   signInWithPopup,
@@ -49,14 +50,30 @@ const useFirebase = () => {
     return unsubscribed;
   }, [auth]);
 
+
+
+  // upload image to imgBB
+  const uploadImage = img => {
+    let body = new FormData()
+    body.set('key', '7e550a7fc902522e5934b0e3e9a410d8')
+    body.append('image', img)
+
+    return axios({
+      method: 'post',
+      url: 'https://api.imgbb.com/1/upload',
+      data: body
+    });
+  };
+
   return {
     user,
-    handleGoogleSignIn,
-    handleLogOut,
     error,
     setError,
     isLoading,
+    uploadImage,
     setIsLoading,
+    handleLogOut,
+    handleGoogleSignIn,
   };
 };
 

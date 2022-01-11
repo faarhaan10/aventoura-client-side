@@ -1,25 +1,26 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Container, FloatingLabel, Form, Row, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+
 
 const AddPackage = () => {
+    const [image, setimage] = React.useState('');
+
     const [loading, setLoading] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+    const { uploadImage } = useAuth();
 
     // post new package to db 
     const onSubmit = data => {
         setLoading(true)
-        fetch('https://aventoura-server.herokuapp.com/packages', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    alert('Package Added Succesfully');
-                    reset();
+        const newData = { image, ...data };
+        axios.post('https://aventoura-server.herokuapp.com/packages', newData)
+            .then(res => {
+                if (res.data.acknowledged) {
+                    alert('Package added Succesfully');
                 }
             })
             .finally(() => setLoading(false))
@@ -34,7 +35,16 @@ const AddPackage = () => {
             </div>
         );
     }
-    //return
+
+
+    const handleImgUpload = (img, setImg) => {
+        uploadImage(img)
+            .then(res => {
+                setImg(res.data.data.url);
+            })
+    };
+
+
     return (
         <div className="pt-3">
             <Container>
@@ -72,18 +82,34 @@ const AddPackage = () => {
                                 </FloatingLabel>
                             </Col>
                             <Col xs={12} md={6}>
-                                <FloatingLabel label="Image URL of the Place">
-                                    <Form.Control type="text" placeholder="url" {...register("image", { required: true })} />
+                                <FloatingLabel label="Image  of the Place">
+                                    <Form.Control
+                                        accept="image/png, image/jpg, image/jpeg"
+                                        type="file"
+                                        required
+                                        onChange={e => handleImgUpload(e.target.files[0], setimage)} />
                                 </FloatingLabel>
                             </Col>
                         </Row>
                         <div className="d-flex justify-content-center flex-wrap">
                             <div className="me-1">
-                                <Form.Control type="submit" value="Add Package" className="bg-warning text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
+                                {image.length ? <Form.Control
+                                    type="submit"
+                                    value="Add Package" className="bg-warning text-white my-3 py-3 fs-6 fw-bold"
+                                    style={{ width: '10rem' }}
+                                />
+                                    :
+                                    <Form.Control
+                                        type="submit"
+                                        value="Add Package" className="bg-secondary text-white my-3 py-3 fs-6 fw-bold"
+                                        style={{ width: '10rem' }}
+                                        disabled
+                                    />}
                             </div>
                             <div>
                                 <Link to='/packages' className="text-decoration-none">
-                                    <Form.Control type="button" value="See All" className="bg-warning text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
+                                    <Form.Control type="button"
+                                        value="See All" className="bg-warning text-white my-3 py-3 fs-6 fw-bold" style={{ width: '10rem' }} />
 
                                 </Link>
                             </div>

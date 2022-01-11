@@ -6,7 +6,6 @@ const Packages = () => {
 
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         setLoading(true)
         fetch(`https://aventoura-server.herokuapp.com/packages`)
